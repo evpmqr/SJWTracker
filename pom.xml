@@ -26,14 +26,6 @@
             <artifactId>JDA</artifactId>
             <version>3.3.0_260</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.arangodb</groupId>
-            <artifactId>arangodb-java-driver</artifactId>
-            <version>4.3.2</version>
-        </dependency>
-
-
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
