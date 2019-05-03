@@ -12,6 +12,9 @@ import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 import javax.security.auth.login.LoginException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class App {
 
@@ -26,6 +29,12 @@ public class App {
         if (!dataHandler.loadData()) {
             dataHandler.init();
         }
+
+        ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
+        ses.scheduleAtFixedRate(() -> {
+            dataHandler.resetPoints();
+            dataHandler.saveData();
+        }, 0, 8, TimeUnit.HOURS);
         try {
             BaseListener baseListener = new BaseListener();
             baseListener.addAction(new HelpAction("!help"));

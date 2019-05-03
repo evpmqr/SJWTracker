@@ -57,6 +57,12 @@ public class DataHandler {
         this.users = users;
     }
 
+    public void resetPoints() {
+        for (User user : users.getUserList()) {
+            user.setVotesLeft(2);
+        }
+    }
+
     public void init() {
         List<User> userList = new ArrayList<>();
         userList.add(new User("Eric", "146737615922528256", true));
