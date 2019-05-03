@@ -10,7 +10,7 @@ import java.util.List;
 public class DataHandler {
     private Users users;
 
-    public boolean loadData(){
+    public boolean loadData() {
         try {
             File file = new File(System.getProperty("user.dir") + "\\src\\main\\resources\\Object.dat");
 
@@ -32,8 +32,6 @@ public class DataHandler {
         return false;
     }
 
-
-
     public void saveData() {
         try {
             FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\src\\main\\resources\\Object.dat");
@@ -47,9 +45,8 @@ public class DataHandler {
         }
     }
 
-    public User fetchUser(String name){
-        User user = users.getUserList().stream().filter(user1 -> user1.isName(name)).findFirst().orElse(null);
-        return user;
+    public User fetchUser(String name) {
+        return users.getUserList().stream().filter(user1 -> user1.isName(name)).findFirst().orElse(null);
     }
 
     public Users getUsers() {
@@ -62,7 +59,7 @@ public class DataHandler {
 
     public void init() {
         List<User> userList = new ArrayList<>();
-        userList.add(new User("Eric","146737615922528256", true));
+        userList.add(new User("Eric", "146737615922528256", true));
         userList.add(new User("Michael", "264629103477522443", false));
         userList.add(new User("Dan", "320718791862517762", false));
         userList.add(new User("Khue", "368695065591414784", false));

@@ -1,8 +1,10 @@
 package com.evpmqr;
 
+import com.evpmqr.actions.*;
 import com.evpmqr.data.DataHandler;
-import com.evpmqr.listener.SJWListener;
-import com.evpmqr.listener.TriviaListener;
+import com.evpmqr.listener.BaseListener;
+import com.evpmqr.objects.Trivia;
+import com.evpmqr.objects.TriviaResult;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -13,20 +15,26 @@ import javax.security.auth.login.LoginException;
 
 public class App {
 
-    private static JDA jda;
-
-    public static Guild getGuild() {
-        return jda.getGuildById("236334952927461378");
-    }
+    public static boolean listening = false;
+    public static Trivia trivia = null;
+    public static TriviaResult triviaResult = null;
 
     public static void main(String[] args) {
         DataHandler dataHandler = new DataHandler();
+
+
         if (!dataHandler.loadData()) {
             dataHandler.init();
         }
         try {
-            jda = new JDABuilder(AccountType.BOT).setToken("NDc0MzA2OTg0NTY5NDcwOTc2.XMsFtA.C02CkE2_23LNff5w2VaH8jQrfh4").buildBlocking();
-            jda.addEventListener(new TriviaListener(), new SJWListener(dataHandler));
+            BaseListener baseListener = new BaseListener();
+            baseListener.addAction(new HelpAction("!help"));
+            baseListener.addAction(new LeaderboardAction("!leaderboard", dataHandler));
+            baseListener.addAction(new SJWVoteAction("!vote", dataHandler));
+            baseListener.addAction(new QueueTriviaAction("!trivia"));
+            baseListener.addAction(new AnswerTriviaAction("!answer"));
+            JDA jda = new JDABuilder(AccountType.BOT).setToken(System.getProperty("token")).buildBlocking();
+            jda.addEventListener(baseListener);
 
         } catch (LoginException | InterruptedException | RateLimitedException e) {
             e.printStackTrace();

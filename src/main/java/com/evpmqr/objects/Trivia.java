@@ -21,23 +21,8 @@ public class Trivia {
         results.forEach(TriviaResult::decode);
     }
 
-    public int getResponseCode() {
-        return responseCode;
-    }
-
-    public void setResponseCode(int responseCode) {
-        this.responseCode = responseCode;
-    }
-
     public List<TriviaResult> getTriviaResults() {
         return results;
     }
 
-    public void setTriviaResults(List<TriviaResult> triviaResults) {
-        this.results = triviaResults;
-    }
-
-    public static void main(String[] args) {
-
-    }
 }
