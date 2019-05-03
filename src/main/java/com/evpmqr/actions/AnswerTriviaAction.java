@@ -16,11 +16,11 @@ public class AnswerTriviaAction extends Action {
             if (App.triviaHandler.validate(message, App.triviaHandler.getTriviaResult(), event)) {
                 sendMessage(event.getAuthor().getAsMention() + " is Correct!\n", event);
                 App.triviaHandler.updateTriviaPoints(event.getAuthor().getId(), 1);
+                App.listening = false;
             } else {
                 sendMessage("Incorrect!\n", event);
                 App.triviaHandler.updateTriviaPoints(event.getAuthor().getId(), -1);
             }
-            App.listening = false;
         }
     }
 
