@@ -3,11 +3,9 @@ package com.evpmqr.listener;
 import com.evpmqr.App;
 import com.evpmqr.data.DataHandler;
 import com.evpmqr.objects.User;
-import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Role;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 import java.util.Comparator;
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
-public class SJWListener extends ListenerAdapter {
+public class SJWListener extends BaseListener {
     private DataHandler dataHandler;
 
     public SJWListener(DataHandler dataHandler) {
@@ -37,7 +35,9 @@ public class SJWListener extends ListenerAdapter {
             }
             sendMessage(stringBuilder.toString(), event);
         } else if (message.contains("!help")) {
-            sendMessage("!<name> <message> <+/- 1>", event);
+            sendMessage("Vote for SJW: !<name> <message> <+/- 1>", event);
+            sendMessage("Queue Trivia Question: !trivia", event);
+            sendMessage("Answer Trivia Question: !answer <1/2/3/4>", event);
         } else if (message.startsWith("!")) {
             User user = dataHandler.fetchUser(event.getAuthor().getId());
             if (user == null) return;
@@ -95,11 +95,5 @@ public class SJWListener extends ListenerAdapter {
             user.setSjwPoints(user.getSjwPoints() + amount);
             dataHandler.saveData();
         }
-    }
-
-    private void sendMessage(String message, GuildMessageReceivedEvent event) {
-        MessageBuilder messageBuilder = new MessageBuilder();
-        messageBuilder.append(message);
-        event.getChannel().sendMessage(messageBuilder.build()).queue();
     }
 }
