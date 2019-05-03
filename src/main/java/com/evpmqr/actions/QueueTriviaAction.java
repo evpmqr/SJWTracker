@@ -17,6 +17,7 @@ public class QueueTriviaAction extends Action {
                 App.triviaHandler.getQuestions();
             }
             App.triviaHandler.setQuestion();
+            System.out.println(App.triviaHandler.getTriviaResult().getCorrectAnswer());
             sendMessage(App.triviaHandler.getTriviaResult().formatQuestion(), event);
         }
     }

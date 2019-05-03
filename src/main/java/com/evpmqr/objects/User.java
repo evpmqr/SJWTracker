@@ -22,7 +22,7 @@ public class User implements Serializable {
     }
 
     public boolean isName(String name) {
-        return this.name.equalsIgnoreCase(name) || this.id.equalsIgnoreCase(name);
+        return this.name.equalsIgnoreCase(name) || this.id.equalsIgnoreCase(name) || aliasContains(name);
     }
 
     private boolean aliasContains(String name) {

@@ -13,23 +13,30 @@ public class SJWVoteAction extends Action {
     @Override
     public void execute(GuildMessageReceivedEvent event) {
         String message = event.getMessage().getContent();
-        String[] split = message.split("\\s+");
 
-        String name = split[1].toLowerCase();
-        String op = (message.contains("+")) ? "+" : "-";
+        User author = App.dataHandler.fetchUser(event.getAuthor().getId());
 
-        int amount = (op.equals("+")) ? 1 : -1;
+        if (author.canVote() || author.isAdmin()) {
+            String[] split = message.split("\\s+");
 
-        System.out.println(name);
-        System.out.println(amount);
+            String name = split[1].toLowerCase();
+            String op = (message.contains("+")) ? "+" : "-";
 
-        User user = App.dataHandler.fetchUser(name);
-        if (user != null) {
-            System.out.println(user.getName());
-            int newAmount = user.getSjwPoints() + amount;
-            newAmount = (newAmount < 0) ? 0 : newAmount;
-            user.setSjwPoints(newAmount);
-            App.dataHandler.saveData();
+            int amount = (op.equals("+")) ? 1 : -1;
+
+            System.out.println(name);
+            System.out.println(amount);
+
+            User user = App.dataHandler.fetchUser(name);
+            if (user != null) {
+                System.out.println(user.getName());
+                int newAmount = user.getSjwPoints() + amount;
+                newAmount = (newAmount < 0) ? 0 : newAmount;
+                user.setSjwPoints(newAmount);
+                App.dataHandler.saveData();
+            }
+        } else {
+            sendMessage("No more vote points left!\n", event);
         }
     }
 }

@@ -54,9 +54,11 @@ public class TriviaHandler {
         triviaResult = trivia.getRandom();
     }
 
-    public void updateTriviaPoints(String id) {
+    public void updateTriviaPoints(String id, int amount) {
         User user = dataHandler.fetchUser(id);
-        user.setTriviaPoints(user.getTriviaPoints() + 1);
+        int newAmount = user.getTriviaPoints() + amount;
+        newAmount = (newAmount < 0) ? 0 : newAmount;
+        user.setTriviaPoints(newAmount);
         dataHandler.saveData();
     }
 

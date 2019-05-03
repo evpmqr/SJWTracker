@@ -69,24 +69,24 @@ public class DataHandler {
         //eric.setSjwPoints(3);
         userList.add(eric);
 
-        User michael = new User("Michael", "264629103477522443", false);
-        // michael.setSjwPoints(6);
+        User michael = new User("Michael", "264629103477522443", false, "359435488962281479");
+       // michael.setSjwPoints(8);
         userList.add(michael);
 
         User dan = new User("Dan", "320718791862517762", false);
-        // dan.setSjwPoints(1);
+        //dan.setSjwPoints(1);
         userList.add(dan);
 
         User khue = new User("Khue", "368695065591414784", false);
-        // khue.setSjwPoints(0);
+       // khue.setSjwPoints(0);
         userList.add(khue);
 
         User riley = new User("Riley", "272895425399226368", false);
-        // riley.setSjwPoints(1);
+        //riley.setSjwPoints(1);
         userList.add(riley);
 
         User sam = new User("Sam", "296426486993518614", false);
-        // sam.setSjwPoints(0);
+        //sam.setSjwPoints(0);
         userList.add(sam);
 
         User karma = new User("Karma", "153558841169149953", false);

@@ -12,6 +12,7 @@ public class HelpAction extends Action {
     @Override
     public void execute(GuildMessageReceivedEvent event) {
         String stringBuilder = "!leaderboard - Gets SJW Leaderboard\n" +
+                "!tleaderboard - Gets Trivia Leaderboard" +
                 "!vote <name> <+/->1 - Adds/Remove SJW Point\n" +
                 "!trivia - adds trivia question to queue\n" +
                 "!answer <1/2/3/4> - answers trivia question\n";
