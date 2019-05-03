@@ -28,7 +28,9 @@ public class SJWVoteAction extends Action {
         User user = dataHandler.fetchUser(name);
         if (user != null) {
             System.out.println(user.getName());
-            user.setSjwPoints(user.getSjwPoints() + amount);
+            int newAmount = user.getSjwPoints() + amount;
+            newAmount = (newAmount < 0) ? 0 : newAmount;
+            user.setSjwPoints(newAmount);
             dataHandler.saveData();
         }
     }

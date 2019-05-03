@@ -15,8 +15,13 @@ public class BaseListener extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String message = event.getMessage().getContent();
         for (Action action : actionList) {
-            if (message.startsWith(action.getCommand())) {
+            if (!event.getAuthor().isBot() && message.startsWith(action.getCommand())) {
                 action.execute(event);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
