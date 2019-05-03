@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Users implements Serializable{
-    List<User> userList;
+    private List<User> userList;
 
     public Users(List<User> userList) {
         this.userList = userList;

@@ -8,6 +8,7 @@ public class User implements Serializable {
     private String name;
     private String id;
     private int sjwPoints;
+    private int triviaPoints;
     private int votesLeft;
     private String[] alias;
     private boolean isAdmin;
@@ -54,6 +55,14 @@ public class User implements Serializable {
 
     public void setSjwPoints(int sjwPoints) {
         this.sjwPoints = sjwPoints;
+    }
+
+    public int getTriviaPoints() {
+        return triviaPoints;
+    }
+
+    public void setTriviaPoints(int triviaPoints) {
+        this.triviaPoints = triviaPoints;
     }
 
     public int getVotesLeft() {
