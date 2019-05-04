@@ -38,7 +38,7 @@ public class DataHandler {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(users);
             objectOut.close();
-            System.out.println("The Object  was succesfully written to a file");
+            System.out.println("The Object  was successfully written to a file");
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -66,19 +66,19 @@ public class DataHandler {
     public void init() {
         List<User> userList = new ArrayList<>();
         User eric = new User("Eric", "146737615922528256", true);
-        //eric.setSjwPoints(3);
+        eric.setSjwPoints(0);
         userList.add(eric);
 
         User michael = new User("Michael", "264629103477522443", false, "359435488962281479");
-       // michael.setSjwPoints(8);
+        //michael.setSjwPoints(8);
         userList.add(michael);
 
         User dan = new User("Dan", "320718791862517762", false);
-        //dan.setSjwPoints(1);
+        //dan.setSjwPoints(9999);
         userList.add(dan);
 
         User khue = new User("Khue", "368695065591414784", false);
-       // khue.setSjwPoints(0);
+        //khue.setSjwPoints(99999);
         userList.add(khue);
 
         User riley = new User("Riley", "272895425399226368", false);

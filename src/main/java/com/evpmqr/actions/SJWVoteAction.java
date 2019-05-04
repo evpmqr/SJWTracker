@@ -22,17 +22,27 @@ public class SJWVoteAction extends Action {
             String name = split[1].toLowerCase();
             String op = (message.contains("+")) ? "+" : "-";
 
-            int amount = (op.equals("+")) ? 1 : -1;
-
+            int amount;
+            if (author.isAdmin()) {
+                if (op.contains("-")) {
+                    amount = Integer.parseInt(split[2]);
+                } else {
+                    String num = split[2].substring(1);
+                    amount = Integer.parseInt(num);
+                }
+            } else {
+                amount = (op.equals("+")) ? 1 : -1;
+            }
             System.out.println(name);
             System.out.println(amount);
 
             User user = App.dataHandler.fetchUser(name);
-            if (user != null) {
+            if (user != null && (!user.getId().equals(author.getId()) || author.isAdmin())) {
                 System.out.println(user.getName());
                 int newAmount = user.getSjwPoints() + amount;
                 newAmount = (newAmount < 0) ? 0 : newAmount;
                 user.setSjwPoints(newAmount);
+                author.setVotesLeft(author.getVotesLeft() - 1);
                 App.dataHandler.saveData();
             }
         } else {

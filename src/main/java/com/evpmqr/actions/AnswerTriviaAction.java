@@ -21,6 +21,8 @@ public class AnswerTriviaAction extends Action {
                 sendMessage("Incorrect!\n", event);
                 App.triviaHandler.updateTriviaPoints(event.getAuthor().getId(), -1);
             }
+        } else {
+            sendMessage("No Trivia queued up. Use !trivia to queue a question\n", event);
         }
     }
 
