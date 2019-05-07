@@ -14,6 +14,6 @@ public class IdiotAction extends Action {
     public void execute(GuildMessageReceivedEvent event) {
         boolean boo = new Random().nextBoolean();
         String s = boo ? "You are a idiot" : "You are not a idiot";
-        sendMessage(s, event);
+        sendMessage(event.getAuthor().getAsMention() + " " + s, event);
     }
 }
