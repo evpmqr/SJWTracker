@@ -42,6 +42,7 @@ public class App {
             baseListener.addAction(new TriviaLeaderboardAction("!tleaderboard"));
             baseListener.addAction(new CoinFlipAction("!coinflip"));
             baseListener.addAction(new RollAction("!roll"));
+            baseListener.addAction(new IdiotAction("!idiot"));
             JDA jda = new JDABuilder(AccountType.BOT).setToken(System.getProperty("token")).buildBlocking();
             jda.addEventListener(baseListener);
 
