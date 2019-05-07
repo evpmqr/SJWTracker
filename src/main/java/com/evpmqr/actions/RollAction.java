@@ -16,7 +16,13 @@ public class RollAction extends Action {
         //"!roll 100"
         String[] result = message.split("\\s+");
         int size = Integer.parseInt(result[1]);
-        int answer = new Random().nextInt(size);
-        sendMessage("" + answer, event);
+        if (size < 0) {
+            sendMessage(event.getAuthor().getAsMention() + " You are an idiot", event);
+        }
+        else {
+            int answer = new Random().nextInt(size);
+            sendMessage("" + answer, event);
+        }
+
     }
 }
