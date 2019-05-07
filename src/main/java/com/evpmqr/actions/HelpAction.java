@@ -15,7 +15,10 @@ public class HelpAction extends Action {
                 "!tleaderboard - Gets Trivia Leaderboard\n" +
                 "!vote <name> <+/->1 - Adds/Remove SJW Point\n" +
                 "!trivia - adds trivia question to queue\n" +
-                "!answer <1/2/3/4> - answers trivia question\n";
+                "!answer <1/2/3/4> - answers trivia question\n" +
+                "!coinflip - flips a coin\n" +
+                "!roll <n> - rolls an n sided dice\n" +
+                "!idiot - checks if you are an idiot or not";
         sendMessage(stringBuilder, event);
     }
 

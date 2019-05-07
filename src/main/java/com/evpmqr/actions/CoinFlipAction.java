@@ -12,8 +12,8 @@ public class CoinFlipAction extends Action {
 
     @Override
     public void execute(GuildMessageReceivedEvent event) {
-        int i = new Random().nextInt(1);
-        String result = (i == 0) ? "heads" : "tails";
+        boolean i = new Random().nextBoolean();
+        String result = (i) ? "heads" : "tails";
         sendMessage(result, event);
     }
 }
